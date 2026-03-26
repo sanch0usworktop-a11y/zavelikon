@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Вход | Zavelikon</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;800&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+background:#0b0b0b;
+color:white;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+font-family:'Outfit',sans-serif;
+}
+
+/* CARD */
+
+.card{
+width:350px;
+background:#141414;
+padding:40px;
+border-radius:20px;
+box-shadow:0 0 40px #000;
+}
+
+/* TABS */
+
+.tabs{
+display:flex;
+margin-bottom:20px;
+}
+
+.tab{
+flex:1;
+text-align:center;
+padding:10px;
+cursor:pointer;
+opacity:.5;
+}
+
+.tab.active{
+opacity:1;
+border-bottom:2px solid #ff6a00;
+}
+
+/* INPUT */
+
+input{
+width:100%;
+padding:12px;
+margin:10px 0;
+border:none;
+border-radius:10px;
+}
+
+/* BUTTON */
+
+button{
+width:100%;
+padding:12px;
+background:#ff6a00;
+border:none;
+margin-top:10px;
+cursor:pointer;
+border-radius:10px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<div class="tabs">
+<div class="tab active" onclick="switchTab('login')">Вход</div>
+<div class="tab" onclick="switchTab('register')">Регистрация</div>
+</div>
+
+<div id="loginBox">
+<input id="loginUser" placeholder="Логин">
+<input id="loginPass" type="password" placeholder="Пароль">
+<button onclick="login()">Войти</button>
+</div>
+
+<div id="registerBox" style="display:none;">
+<input id="regUser" placeholder="Логин">
+<input id="regPass" type="password" placeholder="Пароль">
+<button onclick="register()">Создать аккаунт</button>
+</div>
+
+</div>
+
+<script>
+
+/* TAB SWITCH */
+
+function switchTab(type){
+document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+
+if(type==='login'){
+document.querySelectorAll('.tab')[0].classList.add('active');
+loginBox.style.display='block';
+registerBox.style.display='none';
+}else{
+document.querySelectorAll('.tab')[1].classList.add('active');
+loginBox.style.display='none';
+registerBox.style.display='block';
+}
+}
+
+/* REGISTER */
+
+function register(){
+let user = regUser.value;
+let pass = regPass.value;
+
+localStorage.setItem("user", user);
+localStorage.setItem("pass", pass);
+
+alert("Аккаунт создан!");
+switchTab('login');
+}
+
+/* LOGIN */
+
+function login(){
+let user = loginUser.value;
+let pass = loginPass.value;
+
+if(localStorage.getItem("user") === user && localStorage.getItem("pass") === pass){
+localStorage.setItem("logged", "true");
+window.location.href = "index.html"; // редирект
+}else{
+alert("Неверные данные");
+}
+}
+
+/* AUTO REDIRECT */
+
+if(localStorage.getItem("logged") === "true"){
+window.location.href = "index.html";
+}
+
+</script>
+
+</body>
+</html>
