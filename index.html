@@ -8,46 +8,283 @@
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;800&display=swap" rel="stylesheet">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Outfit',sans-serif;}
-body{background:#0b0b0b;color:white;overflow-x:hidden;}
 
-.nav{display:flex;justify-content:space-between;padding:25px 8%;position:fixed;width:100%;top:0;background:rgba(0,0,0,0.6);backdrop-filter:blur(10px);z-index:100;}
-.logo-nav{font-weight:800;font-size:24px;}
-.logo-nav span{color:#ff6a00;}
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Outfit',sans-serif;
+}
 
-.burger{width:30px;cursor:pointer;display:flex;flex-direction:column;gap:6px;}
-.burger span{height:3px;background:white;border-radius:2px;}
+body{
+background:#0b0b0b;
+color:white;
+overflow-x:hidden;
+}
 
-.menu{position:fixed;top:0;right:-100%;width:300px;height:100vh;background:#111;display:flex;flex-direction:column;padding:100px 40px;gap:30px;transition:.4s;z-index:200;}
-.menu a{color:white;text-decoration:none;font-size:20px;opacity:.7;}
-.menu a:hover{opacity:1;color:#ff6a00;}
-.menu.active{right:0;}
+/* NAV */
 
-.hero{display:grid;grid-template-columns:1fr 1fr;height:100vh;}
-.hero-left{display:flex;flex-direction:column;justify-content:center;padding:0 10%;}
-.hero-left h1{font-size:70px;}
-.hero-left h1 span{color:#ff6a00;}
-.hero-left p{margin-top:20px;opacity:.7;}
+.nav{
+display:flex;
+justify-content:space-between;
+padding:25px 8%;
+position:fixed;
+width:100%;
+top:0;
+background:rgba(0,0,0,0.6);
+backdrop-filter:blur(10px);
+z-index:100;
+}
 
-.cta{margin-top:40px;padding:18px 50px;border:none;border-radius:10px;background:#ff6a00;color:white;cursor:pointer;}
+.logo-nav{
+font-weight:800;
+font-size:24px;
+}
 
-.hero-right{background:url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b') center/cover no-repeat;}
+.logo-nav span{
+color:#ff6a00;
+}
 
-.section{padding:120px 8%;}
-.programs{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px;}
-.program{background:#141414;padding:40px;border-radius:20px;}
-.price{font-size:40px;color:#ff6a00;}
+/* BURGER */
 
-.full-img{height:400px;background:url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48') center/cover no-repeat;margin-top:80px;border-radius:20px;}
-.cta-block{margin-top:120px;padding:80px;background:#141414;border-radius:20px;text-align:center;}
+.burger{
+width:30px;
+cursor:pointer;
+display:flex;
+flex-direction:column;
+gap:6px;
+}
 
-.glow{position:fixed;width:300px;height:300px;background:radial-gradient(circle,#ff6a00aa 0%, transparent 60%);pointer-events:none;border-radius:50%;transform:translate(-50%,-50%);}
+.burger span{
+height:3px;
+background:white;
+border-radius:2px;
+transition:.3s;
+}
+
+/* MENU */
+
+.menu{
+position:fixed;
+top:0;
+right:-100%;
+width:300px;
+height:100vh;
+background:#111;
+display:flex;
+flex-direction:column;
+padding:100px 40px;
+gap:30px;
+transition:.4s;
+z-index:200;
+}
+
+.menu a{
+color:white;
+text-decoration:none;
+font-size:20px;
+opacity:.7;
+transition:.3s;
+}
+
+.menu a:hover{
+opacity:1;
+color:#ff6a00;
+}
+
+.menu.active{
+right:0;
+}
+
+/* КРЕСТИК */
+
+.close-btn{
+position:absolute;
+top:30px;
+right:30px;
+font-size:28px;
+cursor:pointer;
+opacity:.7;
+transition:.3s;
+}
+
+.close-btn:hover{
+opacity:1;
+color:#ff6a00;
+}
+
+/* HERO */
+
+.hero{
+display:grid;
+grid-template-columns:1fr 1fr;
+height:100vh;
+}
+
+.hero-left{
+display:flex;
+flex-direction:column;
+justify-content:center;
+padding:0 10%;
+animation:fade 1s ease;
+}
+
+@keyframes fade{
+from{opacity:0; transform:translateY(30px);}
+to{opacity:1; transform:translateY(0);}
+}
+
+.hero-left h1{
+font-size:70px;
+line-height:1.1;
+}
+
+.hero-left h1 span{
+color:#ff6a00;
+}
+
+.hero-left p{
+margin-top:20px;
+opacity:.7;
+font-size:18px;
+}
+
+/* BUTTON */
+
+.cta{
+margin-top:40px;
+padding:18px 50px;
+border:none;
+border-radius:10px;
+background:#ff6a00;
+color:white;
+font-size:16px;
+cursor:pointer;
+transition:.3s;
+animation:pulse 2s infinite;
+}
+
+.cta:hover{
+transform:translateY(-3px);
+box-shadow:0 0 25px #ff6a00;
+}
+
+@keyframes pulse{
+0%{box-shadow:0 0 0 #ff6a00;}
+50%{box-shadow:0 0 30px #ff6a00;}
+100%{box-shadow:0 0 0 #ff6a00;}
+}
+
+/* RIGHT IMAGE */
+
+.hero-right{
+background:url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b') center/cover no-repeat;
+position:relative;
+}
+
+.hero-right::after{
+content:'';
+position:absolute;
+width:100%;
+height:100%;
+background:linear-gradient(to left,#0b0b0b 10%, transparent);
+}
+
+/* STATS */
+
+.stats{
+display:flex;
+gap:50px;
+margin-top:50px;
+}
+
+.stat h2{
+color:#ff6a00;
+}
+
+/* SECTION */
+
+.section{
+padding:120px 8%;
+}
+
+/* PROGRAMS */
+
+.programs{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:30px;
+}
+
+.program{
+background:#141414;
+padding:40px;
+border-radius:20px;
+border:1px solid #222;
+transition:.3s;
+}
+
+.program:hover{
+transform:translateY(-10px);
+border-color:#ff6a00;
+box-shadow:0 0 30px #ff6a0022;
+}
+
+.price{
+font-size:40px;
+color:#ff6a00;
+margin:15px 0;
+}
+
+/* IMAGE BLOCK */
+
+.full-img{
+height:400px;
+background:url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48') center/cover no-repeat;
+margin-top:80px;
+border-radius:20px;
+}
+
+/* CTA BLOCK */
+
+.cta-block{
+margin-top:120px;
+padding:80px;
+background:#141414;
+border-radius:20px;
+text-align:center;
+}
+
+/* FLOAT GLOW CURSOR */
+
+.glow{
+position:fixed;
+width:300px;
+height:300px;
+background:radial-gradient(circle,#ff6a00aa 0%, transparent 60%);
+pointer-events:none;
+border-radius:50%;
+mix-blend-mode:screen;
+transform:translate(-50%,-50%);
+z-index:999;
+}
+
+/* MOBILE */
 
 @media(max-width:900px){
-.hero{grid-template-columns:1fr;}
-.hero-right{height:300px;}
-.hero-left h1{font-size:40px;}
+.hero{
+grid-template-columns:1fr;
 }
+
+.hero-right{
+height:300px;
+}
+
+.hero-left h1{
+font-size:40px;
+}
+}
+
 </style>
 </head>
 
@@ -55,20 +292,28 @@ body{background:#0b0b0b;color:white;overflow-x:hidden;}
 
 <div class="nav">
 <div class="logo-nav">Zaveli<span>kon</span></div>
+
 <div class="burger" onclick="toggleMenu()">
-<span></span><span></span><span></span>
+<span></span>
+<span></span>
+<span></span>
 </div>
 </div>
 
 <div class="menu" id="menu">
+
+<div class="close-btn" onclick="toggleMenu()">✕</div>
+
 <a href="#">Главная</a>
 <a href="#">Программы</a>
 <a href="#">Контакты</a>
 <a href="https://t.me/zhelko1" target="_blank">Написать</a>
 <a href="https://t.me/zhelko1" target="_blank">Записаться</a>
+
 </div>
 
 <div class="hero">
+
 <div class="hero-left">
 <h1>Создай своё <span>идеальное тело</span></h1>
 <p>Персональные тренировки, питание и контроль результата</p>
@@ -77,17 +322,53 @@ body{background:#0b0b0b;color:white;overflow-x:hidden;}
 Начать сейчас
 </button>
 
+<div class="stats">
+<div class="stat">
+<h2>+120</h2>
+<p>Клиентов</p>
 </div>
+
+<div class="stat">
+<h2>+5 лет</h2>
+<p>Опыта</p>
+</div>
+
+<div class="stat">
+<h2>100%</h2>
+<p>Результат</p>
+</div>
+</div>
+
+</div>
+
 <div class="hero-right"></div>
+
 </div>
 
 <div class="section">
+
 <h1>Программы</h1>
 
 <div class="programs">
-<div class="program"><h3>Start</h3><div class="price">100$</div></div>
-<div class="program"><h3>Pro</h3><div class="price">200$</div></div>
-<div class="program"><h3>Ultra</h3><div class="price">500$</div></div>
+
+<div class="program">
+<h3>Start</h3>
+<div class="price">100$</div>
+<p>База для старта</p>
+</div>
+
+<div class="program">
+<h3>Pro</h3>
+<div class="price">200$</div>
+<p>Персональный подход</p>
+</div>
+
+<div class="program">
+<h3>Ultra</h3>
+<div class="price">500$</div>
+<p>Максимальный результат</p>
+</div>
+
 </div>
 
 <div class="full-img"></div>
@@ -98,32 +379,33 @@ body{background:#0b0b0b;color:white;overflow-x:hidden;}
 Написать в Telegram
 </button>
 </div>
+
 </div>
 
 <div class="glow" id="glow"></div>
 
 <script>
-const menu = document.getElementById("menu");
 
 function toggleMenu(){
-menu.classList.toggle("active");
+document.getElementById("menu").classList.toggle("active");
 }
 
-document.querySelectorAll("#menu a").forEach(link=>{
-link.addEventListener("click", ()=>menu.classList.remove("active"));
-});
-
+// закрытие при клике вне
 document.addEventListener("click", (e)=>{
+const menu = document.getElementById("menu");
+
 if(!menu.contains(e.target) && !e.target.closest(".burger")){
 menu.classList.remove("active");
 }
 });
 
+// glow
 document.addEventListener("mousemove", e=>{
 const glow = document.getElementById("glow");
 glow.style.left = e.clientX + "px";
 glow.style.top = e.clientY + "px";
 });
+
 </script>
 
 </body>
