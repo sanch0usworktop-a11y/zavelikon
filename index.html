@@ -295,6 +295,27 @@ document.getElementById("welcome").innerText = "Привет, " + user;
 }
 }
 
+</script><script>
+
+// если не залогинен → кидает обратно
+if(localStorage.getItem("logged") !== "true"){
+window.location.href = "auth.html";
+}
+
+// имя пользователя
+window.onload = ()=>{
+let user = localStorage.getItem("user");
+if(user){
+document.getElementById("welcome").innerText = "Привет, " + user;
+}
+}
+
+// logout
+function logout(){
+localStorage.removeItem("logged");
+window.location.href = "auth.html";
+}
+
 </script>
 
 </body>
