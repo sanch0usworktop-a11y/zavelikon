@@ -6,39 +6,46 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Zavelikon</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;800&display=swap" rel="stylesheet">
 
 <style>
 
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Outfit',sans-serif;
+}
 
 body{
-background:black;
+background:#05010a;
 color:white;
 overflow-x:hidden;
 }
 
-/* VIDEO BG */
+/* BACKGROUND BLOBS */
 
-.video-bg{
+.blob{
 position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-object-fit:cover;
-z-index:-2;
-opacity:.25;
+border-radius:50%;
+filter:blur(120px);
+z-index:-1;
 }
 
-/* GRADIENT OVERLAY */
+.blob1{
+width:500px;
+height:500px;
+background:#ff00ff;
+top:-150px;
+left:-100px;
+}
 
-.overlay{
-position:fixed;
-width:100%;
-height:100%;
-background:linear-gradient(120deg,#000,#0a001a,#000);
-z-index:-1;
+.blob2{
+width:600px;
+height:600px;
+background:#00ffff;
+bottom:-200px;
+right:-150px;
 }
 
 /* NAV */
@@ -47,111 +54,111 @@ z-index:-1;
 position:fixed;
 top:0;
 width:100%;
+padding:25px;
 display:flex;
 justify-content:center;
-gap:40px;
-padding:20px;
-backdrop-filter:blur(12px);
-background:rgba(0,0,0,0.4);
-z-index:5;
+gap:60px;
+font-weight:500;
+background:rgba(0,0,0,0.2);
+backdrop-filter:blur(10px);
 }
 
 .nav a{
 color:white;
 text-decoration:none;
-font-weight:600;
-transition:.3s;
 }
 
-.nav a:hover{
-color:#ff00ff;
-}
-
-/* HERO */
+/* HERO SPLIT */
 
 .hero{
 height:100vh;
 display:flex;
-flex-direction:column;
-justify-content:center;
 align-items:center;
-text-align:center;
+justify-content:space-between;
+padding:0 8%;
+}
+
+.left{
+max-width:600px;
 }
 
 .logo{
-font-size:110px;
-font-weight:900;
-background:linear-gradient(90deg,#ff00ff,#00ffff,#8a2be2);
+font-size:120px;
+font-weight:800;
+line-height:0.9;
+background:linear-gradient(90deg,#ff00ff,#00ffff);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
-animation:pulse 3s infinite alternate;
 }
 
-@keyframes pulse{
-from{text-shadow:0 0 20px #ff00ff}
-to{text-shadow:0 0 60px #00ffff}
+.tag{
+margin-top:20px;
+opacity:.7;
+font-size:20px;
 }
 
-.main-btn{
+.cta{
 margin-top:40px;
-padding:20px 60px;
-font-size:22px;
+padding:22px 60px;
+font-size:20px;
 border:none;
-border-radius:20px;
+border-radius:18px;
 background:linear-gradient(90deg,#ff00ff,#8a2be2);
-cursor:pointer;
 color:white;
-transition:.4s;
+cursor:pointer;
 }
 
-.main-btn:hover{
-transform:scale(1.15);
-box-shadow:0 0 40px #ff00ff;
+/* RIGHT HERO CARD */
+
+.hero-card{
+width:420px;
+background:rgba(255,255,255,0.05);
+padding:40px;
+border-radius:30px;
+backdrop-filter:blur(25px);
 }
 
-/* SECTION */
+.hero-card h2{
+font-size:32px;
+margin-bottom:20px;
+}
+
+.hero-card p{
+opacity:.7;
+}
+
+/* PROGRAM SECTION */
 
 .section{
-padding:120px 20px;
-text-align:center;
+padding:140px 8%;
 }
 
-.cards{
-display:flex;
-justify-content:center;
+.programs{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
 gap:30px;
-flex-wrap:wrap;
 margin-top:60px;
 }
 
-.card{
-background:rgba(255,255,255,0.06);
-padding:45px;
-width:280px;
+.program{
+background:rgba(255,255,255,0.04);
+padding:50px;
 border-radius:30px;
-backdrop-filter:blur(25px);
-transition:.6s;
-opacity:0;
-transform:translateY(60px);
+transition:.4s;
 }
 
-.card.show{
-opacity:1;
-transform:translateY(0);
-}
-
-.card:hover{
-transform:scale(1.1);
-box-shadow:0 0 50px #ff00ff;
+.program:hover{
+transform:translateY(-10px);
+box-shadow:0 0 50px #ff00ff44;
 }
 
 .price{
-font-size:50px;
+font-size:52px;
 margin:20px 0;
 color:#ff00ff;
 }
 
-.card button{
+.program button{
 padding:14px 30px;
 border:none;
 border-radius:14px;
@@ -160,36 +167,25 @@ color:white;
 cursor:pointer;
 }
 
-/* COUNTER */
+/* GALLERY */
 
-.counter{
-font-size:70px;
-font-weight:900;
-color:#ff00ff;
-margin-top:30px;
-}
-
-/* GYM */
-
-.gym{
-display:flex;
-justify-content:center;
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
 gap:20px;
-flex-wrap:wrap;
 margin-top:60px;
 }
 
-.gym img{
-width:320px;
-height:200px;
+.gallery img{
+width:100%;
+height:240px;
 object-fit:cover;
 border-radius:20px;
-transition:.5s;
+transition:.4s;
 }
 
-.gym img:hover{
-transform:scale(1.15);
-box-shadow:0 0 40px #ff00ff;
+.gallery img:hover{
+transform:scale(1.08);
 }
 
 /* FLOAT TG */
@@ -201,18 +197,9 @@ right:30px;
 background:linear-gradient(90deg,#ff00ff,#8a2be2);
 padding:20px;
 border-radius:50%;
-font-size:22px;
-box-shadow:0 0 40px #ff00ff;
 text-decoration:none;
 color:white;
-}
-
-/* FOOTER */
-
-.footer{
-padding:60px;
-opacity:.4;
-text-align:center;
+font-size:20px;
 }
 
 </style>
@@ -220,11 +207,8 @@ text-align:center;
 
 <body>
 
-<video class="video-bg" autoplay muted loop>
-<source src="https://cdn.coverr.co/videos/coverr-working-out-4474/1080p.mp4">
-</video>
-
-<div class="overlay"></div>
+<div class="blob blob1"></div>
+<div class="blob blob2"></div>
 
 <div class="nav">
 <a href="#">Главная</a>
@@ -233,35 +217,43 @@ text-align:center;
 </div>
 
 <div class="hero">
+
+<div class="left">
 <div class="logo">Zavelikon</div>
-<p>Тренировки • Спортзал • Питание 💪</p>
+<div class="tag">Тренировки • Спортзал • Питание 💪</div>
 
 <a href="https://t.me/zhelko1">
-<button class="main-btn">Написать в Telegram</button>
+<button class="cta">Написать в Telegram</button>
 </a>
+</div>
+
+<div class="hero-card">
+<h2>Начни менять тело уже сегодня</h2>
+<p>Персональные программы тренировок, питание и контроль результата.</p>
+</div>
 
 </div>
 
 <div class="section">
-<h2>Наши программы</h2>
+<h1>Наши программы</h1>
 
-<div class="cards">
+<div class="programs">
 
-<div class="card">
+<div class="program">
 <h3>Start</h3>
 <div class="price">100$</div>
 <p>Базовые тренировки + питание</p>
 <button>Записаться</button>
 </div>
 
-<div class="card">
+<div class="program">
 <h3>Pro</h3>
 <div class="price">200$</div>
 <p>Персональная программа</p>
 <button>Записаться</button>
 </div>
 
-<div class="card">
+<div class="program">
 <h3>Ultra</h3>
 <div class="price">500$</div>
 <p>Тренер + питание + контроль</p>
@@ -269,16 +261,12 @@ text-align:center;
 </div>
 
 </div>
-
-<div class="counter" id="counter">0</div>
-<p>Довольных клиентов</p>
-
 </div>
 
 <div class="section">
-<h2>Наш зал</h2>
+<h1>Наш зал</h1>
 
-<div class="gym">
+<div class="gallery">
 <img src="https://images.unsplash.com/photo-1558611848-73f7eb4001a1">
 <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48">
 <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b">
@@ -287,37 +275,6 @@ text-align:center;
 </div>
 
 <a class="tg" href="https://t.me/zhelko1">✉</a>
-
-<div class="footer">
-© Zavelikon Fitness
-</div>
-
-<script>
-
-/* scroll animation */
-
-const cards=document.querySelectorAll('.card')
-
-window.addEventListener('scroll',()=>{
-cards.forEach(card=>{
-const pos=card.getBoundingClientRect().top
-if(pos<window.innerHeight-100){
-card.classList.add('show')
-}
-})
-})
-
-/* counter */
-
-let count=0
-let target=347
-let interval=setInterval(()=>{
-count++
-document.getElementById('counter').innerText=count
-if(count>=target) clearInterval(interval)
-},10)
-
-</script>
 
 </body>
 </html>
