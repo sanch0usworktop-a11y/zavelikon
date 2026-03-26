@@ -19,6 +19,7 @@ font-family:'Outfit',sans-serif;
 body{
 background:#0b0b0b;
 color:white;
+overflow-x:hidden;
 }
 
 /* NAV */
@@ -44,22 +45,58 @@ font-size:24px;
 color:#ff6a00;
 }
 
-.nav-links{
+/* BURGER */
+
+.burger{
+width:30px;
+cursor:pointer;
 display:flex;
-gap:40px;
+flex-direction:column;
+gap:6px;
 }
 
-.nav a{
-color:#ccc;
-text-decoration:none;
+.burger span{
+height:3px;
+background:white;
+border-radius:2px;
 transition:.3s;
 }
 
-.nav a:hover{
+/* MENU */
+
+.menu{
+position:fixed;
+top:0;
+right:-100%;
+width:300px;
+height:100vh;
+background:#111;
+display:flex;
+flex-direction:column;
+padding:100px 40px;
+gap:30px;
+transition:.4s;
+z-index:200;
+}
+
+.menu a{
+color:white;
+text-decoration:none;
+font-size:20px;
+opacity:.7;
+transition:.3s;
+}
+
+.menu a:hover{
+opacity:1;
 color:#ff6a00;
 }
 
-/* HERO SPLIT FULL */
+.menu.active{
+right:0;
+}
+
+/* HERO */
 
 .hero{
 display:grid;
@@ -72,6 +109,12 @@ display:flex;
 flex-direction:column;
 justify-content:center;
 padding:0 10%;
+animation:fade 1s ease;
+}
+
+@keyframes fade{
+from{opacity:0; transform:translateY(30px);}
+to{opacity:1; transform:translateY(0);}
 }
 
 .hero-left h1{
@@ -101,11 +144,18 @@ color:white;
 font-size:16px;
 cursor:pointer;
 transition:.3s;
+animation:pulse 2s infinite;
 }
 
 .cta:hover{
 transform:translateY(-3px);
 box-shadow:0 0 25px #ff6a00;
+}
+
+@keyframes pulse{
+0%{box-shadow:0 0 0 #ff6a00;}
+50%{box-shadow:0 0 30px #ff6a00;}
+100%{box-shadow:0 0 0 #ff6a00;}
 }
 
 /* RIGHT IMAGE */
@@ -135,16 +185,13 @@ margin-top:50px;
 color:#ff6a00;
 }
 
-/* PROGRAMS */
+/* SECTION */
 
 .section{
 padding:120px 8%;
 }
 
-.section h1{
-font-size:40px;
-margin-bottom:50px;
-}
+/* PROGRAMS */
 
 .programs{
 display:grid;
@@ -163,10 +210,7 @@ transition:.3s;
 .program:hover{
 transform:translateY(-10px);
 border-color:#ff6a00;
-}
-
-.program h3{
-font-size:24px;
+box-shadow:0 0 30px #ff6a0022;
 }
 
 .price{
@@ -175,24 +219,7 @@ color:#ff6a00;
 margin:15px 0;
 }
 
-.program ul{
-margin:20px 0;
-opacity:.7;
-}
-
-.program li{
-margin-bottom:8px;
-}
-
-.program button{
-background:#ff6a00;
-border:none;
-padding:12px 25px;
-border-radius:8px;
-cursor:pointer;
-}
-
-/* FULL IMAGE BLOCK */
+/* IMAGE BLOCK */
 
 .full-img{
 height:400px;
@@ -201,7 +228,7 @@ margin-top:80px;
 border-radius:20px;
 }
 
-/* FOOTER CTA */
+/* CTA BLOCK */
 
 .cta-block{
 margin-top:120px;
@@ -211,18 +238,23 @@ border-radius:20px;
 text-align:center;
 }
 
-.cta-block h2{
-font-size:36px;
-}
+/* FLOAT GLOW CURSOR */
 
-.cta-block button{
-margin-top:30px;
+.glow{
+position:fixed;
+width:300px;
+height:300px;
+background:radial-gradient(circle,#ff6a00aa 0%, transparent 60%);
+pointer-events:none;
+border-radius:50%;
+mix-blend-mode:screen;
+transform:translate(-50%,-50%);
+z-index:999;
 }
 
 /* MOBILE */
 
 @media(max-width:900px){
-
 .hero{
 grid-template-columns:1fr;
 }
@@ -234,7 +266,6 @@ height:300px;
 .hero-left h1{
 font-size:40px;
 }
-
 }
 
 </style>
@@ -245,11 +276,18 @@ font-size:40px;
 <div class="nav">
 <div class="logo-nav">Zaveli<span>kon</span></div>
 
-<div class="nav-links">
+<div class="burger" onclick="toggleMenu()">
+<span></span>
+<span></span>
+<span></span>
+</div>
+</div>
+
+<div class="menu" id="menu">
 <a href="#">Главная</a>
 <a href="#">Программы</a>
 <a href="#">Контакты</a>
-</div>
+<a href="#">Telegram</a>
 </div>
 
 <div class="hero">
@@ -284,6 +322,7 @@ font-size:40px;
 </div>
 
 <div class="section">
+
 <h1>Программы</h1>
 
 <div class="programs">
@@ -291,34 +330,19 @@ font-size:40px;
 <div class="program">
 <h3>Start</h3>
 <div class="price">100$</div>
-<ul>
-<li>Тренировки</li>
-<li>Питание</li>
-<li>База</li>
-</ul>
-<button>Выбрать</button>
+<p>База для старта</p>
 </div>
 
 <div class="program">
 <h3>Pro</h3>
 <div class="price">200$</div>
-<ul>
-<li>Персональный план</li>
-<li>Контроль</li>
-<li>Поддержка</li>
-</ul>
-<button>Выбрать</button>
+<p>Персональный подход</p>
 </div>
 
 <div class="program">
 <h3>Ultra</h3>
 <div class="price">500$</div>
-<ul>
-<li>Тренер</li>
-<li>Полный контроль</li>
-<li>Макс результат</li>
-</ul>
-<button>Выбрать</button>
+<p>Максимальный результат</p>
 </div>
 
 </div>
@@ -326,11 +350,29 @@ font-size:40px;
 <div class="full-img"></div>
 
 <div class="cta-block">
-<h2>Готов начать менять себя?</h2>
+<h2>Готов начать?</h2>
 <button class="cta">Написать в Telegram</button>
 </div>
 
 </div>
+
+<div class="glow" id="glow"></div>
+
+<script>
+
+function toggleMenu(){
+document.getElementById("menu").classList.toggle("active");
+}
+
+/* GLOW CURSOR */
+
+document.addEventListener("mousemove", e=>{
+const glow = document.getElementById("glow");
+glow.style.left = e.clientX + "px";
+glow.style.top = e.clientY + "px";
+});
+
+</script>
 
 </body>
 </html>
