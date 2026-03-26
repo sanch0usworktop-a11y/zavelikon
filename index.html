@@ -18,40 +18,21 @@ scroll-behavior:smooth;
 }
 
 body{
-background:#05010a;
+background:#0f0f0f;
 color:white;
 overflow-x:hidden;
 }
 
-/* BLOBS */
+/* BACKGROUND */
 
-.blob{
+body::before{
+content:'';
 position:fixed;
-border-radius:50%;
-filter:blur(120px);
+width:100%;
+height:100%;
+background:radial-gradient(circle at 20% 20%, #ff6a00 0%, transparent 40%),
+            radial-gradient(circle at 80% 80%, #333 0%, transparent 40%);
 z-index:-1;
-animation:float 12s infinite alternate;
-}
-
-@keyframes float{
-from{transform:translateY(0);}
-to{transform:translateY(80px);}
-}
-
-.blob1{
-width:500px;
-height:500px;
-background:#ff00ff;
-top:-150px;
-left:-100px;
-}
-
-.blob2{
-width:600px;
-height:600px;
-background:#00ffff;
-bottom:-200px;
-right:-150px;
 }
 
 /* NAV */
@@ -64,30 +45,19 @@ padding:20px;
 display:flex;
 justify-content:center;
 gap:60px;
-background:rgba(0,0,0,0.3);
-backdrop-filter:blur(15px);
-z-index:100;
+background:rgba(20,20,20,0.7);
+backdrop-filter:blur(10px);
+border-bottom:1px solid #222;
 }
 
 .nav a{
-color:white;
+color:#ccc;
 text-decoration:none;
-position:relative;
-}
-
-.nav a::after{
-content:'';
-position:absolute;
-width:0;
-height:2px;
-background:#ff00ff;
-left:0;
-bottom:-5px;
 transition:.3s;
 }
 
-.nav a:hover::after{
-width:100%;
+.nav a:hover{
+color:#ff6a00;
 }
 
 /* HERO */
@@ -98,73 +68,64 @@ display:flex;
 align-items:center;
 justify-content:space-between;
 padding:0 8%;
-animation:fade 1.5s ease;
-}
-
-@keyframes fade{
-from{opacity:0; transform:translateY(30px);}
-to{opacity:1; transform:translateY(0);}
-}
-
-.left{
-max-width:600px;
 }
 
 .logo{
-font-size:120px;
+font-size:110px;
 font-weight:800;
-line-height:0.9;
-background:linear-gradient(90deg,#ff00ff,#00ffff);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
+color:white;
+}
+
+.logo span{
+color:#ff6a00;
 }
 
 .tag{
 margin-top:20px;
-opacity:.7;
-font-size:20px;
+opacity:.6;
+font-size:18px;
 }
 
 /* BUTTON */
 
 .cta{
 margin-top:40px;
-padding:22px 60px;
-font-size:20px;
+padding:20px 55px;
+font-size:18px;
 border:none;
-border-radius:18px;
-background:linear-gradient(90deg,#ff00ff,#8a2be2);
+border-radius:12px;
+background:#ff6a00;
 color:white;
 cursor:pointer;
 transition:.3s;
-box-shadow:0 0 20px #ff00ff55;
+box-shadow:0 0 20px #ff6a0088;
 }
 
 .cta:hover{
-transform:scale(1.05);
-box-shadow:0 0 40px #ff00ff;
+transform:translateY(-3px);
+box-shadow:0 0 40px #ff6a00;
 }
 
 /* HERO CARD */
 
 .hero-card{
-width:420px;
-background:rgba(255,255,255,0.05);
+width:400px;
+background:#1a1a1a;
 padding:40px;
-border-radius:30px;
-backdrop-filter:blur(25px);
-transition:.4s;
+border-radius:20px;
+border:1px solid #2a2a2a;
+transition:.3s;
 }
 
 .hero-card:hover{
 transform:translateY(-10px);
-box-shadow:0 0 60px #00ffff33;
+border-color:#ff6a00;
 }
 
 /* SECTION */
 
 .section{
-padding:140px 8%;
+padding:120px 8%;
 }
 
 /* PROGRAMS */
@@ -177,52 +138,37 @@ margin-top:60px;
 }
 
 .program{
-background:rgba(255,255,255,0.04);
-padding:50px;
-border-radius:30px;
-transition:.4s;
-position:relative;
-overflow:hidden;
-}
-
-.program::before{
-content:'';
-position:absolute;
-width:100%;
-height:100%;
-background:linear-gradient(120deg,transparent,#ff00ff22,transparent);
-top:0;
-left:-100%;
-transition:.5s;
-}
-
-.program:hover::before{
-left:100%;
+background:#1a1a1a;
+padding:40px;
+border-radius:20px;
+border:1px solid #2a2a2a;
+transition:.3s;
 }
 
 .program:hover{
-transform:translateY(-10px) scale(1.02);
-box-shadow:0 0 60px #ff00ff44;
+transform:translateY(-8px);
+border-color:#ff6a00;
+box-shadow:0 0 30px #ff6a0022;
 }
 
 .price{
-font-size:52px;
+font-size:48px;
 margin:20px 0;
-color:#ff00ff;
+color:#ff6a00;
 }
 
 .program button{
-padding:14px 30px;
+padding:12px 25px;
 border:none;
-border-radius:14px;
-background:linear-gradient(90deg,#ff00ff,#8a2be2);
+border-radius:10px;
+background:#ff6a00;
 color:white;
 cursor:pointer;
 transition:.3s;
 }
 
 .program button:hover{
-transform:scale(1.1);
+transform:scale(1.05);
 }
 
 /* GALLERY */
@@ -236,45 +182,61 @@ margin-top:60px;
 
 .gallery img{
 width:100%;
-height:240px;
+height:230px;
 object-fit:cover;
-border-radius:20px;
+border-radius:15px;
+filter:grayscale(40%);
 transition:.4s;
 }
 
 .gallery img:hover{
-transform:scale(1.1);
-filter:brightness(1.2);
+filter:grayscale(0%);
+transform:scale(1.05);
 }
 
-/* TELEGRAM BUTTON */
+/* TG BUTTON */
 
 .tg{
 position:fixed;
 bottom:30px;
 right:30px;
-background:linear-gradient(90deg,#ff00ff,#8a2be2);
-padding:20px;
+background:#ff6a00;
+padding:18px;
 border-radius:50%;
 text-decoration:none;
 color:white;
 font-size:20px;
-box-shadow:0 0 20px #ff00ff88;
+box-shadow:0 0 20px #ff6a00aa;
 transition:.3s;
 }
 
 .tg:hover{
-transform:scale(1.2);
-box-shadow:0 0 40px #ff00ff;
+transform:scale(1.15);
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+.hero{
+flex-direction:column;
+justify-content:center;
+text-align:center;
+gap:40px;
+}
+
+.logo{
+font-size:70px;
+}
+
+.hero-card{
+width:100%;
+}
 }
 
 </style>
 </head>
 
 <body>
-
-<div class="blob blob1"></div>
-<div class="blob blob2"></div>
 
 <div class="nav">
 <a href="#">Главная</a>
@@ -284,8 +246,8 @@ box-shadow:0 0 40px #ff00ff;
 
 <div class="hero">
 
-<div class="left">
-<div class="logo">Zavelikon</div>
+<div>
+<div class="logo">Zaveli<span>kon</span></div>
 <div class="tag">Тренировки • Спортзал • Питание 💪</div>
 
 <a href="https://t.me/zhelko1">
