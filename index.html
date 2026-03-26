@@ -16,94 +16,11 @@ box-sizing:border-box;
 font-family:'Outfit',sans-serif;
 }
 
-<body>
-
-<div class="nav">
-    <div class="logo-nav">Zaveli<span>kon</span></div>
-    <div class="burger" onclick="toggleMenu()">
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
-</div>
-
-<div class="menu" id="menu">
-    <a href="#">Главная</a>
-    <a href="#">Программы</a>
-    <a href="#">Контакты</a>
-    <a href="https://t.me/zhelko1" target="_blank">Telegram</a>
-</div>
-
-<div class="hero">
-    <div class="hero-left">
-        <h1>Создай своё <span>идеальное тело</span></h1>
-        <p>Персональные тренировки, питание и контроль результата</p>
-
-        <button class="cta" onclick="window.open('https://t.me/zhelko1', '_blank')">Начать сейчас</button>
-
-        <div class="stats">
-            <div class="stat">
-                <h2>+120</h2>
-                <p>Клиентов</p>
-            </div>
-            <div class="stat">
-                <h2>+5 лет</h2>
-                <p>Опыта</p>
-            </div>
-            <div class="stat">
-                <h2>100%</h2>
-                <p>Результат</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="hero-right"></div>
-</div>
-
-<div class="section">
-    <h1>Программы</h1>
-    <div class="programs">
-        <div class="program">
-            <h3>Start</h3>
-            <div class="price">100$</div>
-            <p>База для старта</p>
-        </div>
-        <div class="program">
-            <h3>Pro</h3>
-            <div class="price">200$</div>
-            <p>Персональный подход</p>
-        </div>
-        <div class="program">
-            <h3>Ultra</h3>
-            <div class="price">500$</div>
-            <p>Максимальный результат</p>
-        </div>
-    </div>
-
-    <div class="full-img"></div>
-
-    <div class="cta-block">
-        <h2>Готов начать?</h2>
-        <button class="cta" onclick="window.open('https://t.me/zhelko1', '_blank')">Написать в Telegram</button>
-    </div>
-</div>
-
-<div class="glow" id="glow"></div>
-
-<script>
-function toggleMenu(){
-    document.getElementById("menu").classList.toggle("active");
+body{
+background:#0b0b0b;
+color:white;
+overflow-x:hidden;
 }
-
-/* GLOW CURSOR */
-document.addEventListener("mousemove", e=>{
-    const glow = document.getElementById("glow");
-    glow.style.left = e.clientX + "px";
-    glow.style.top = e.clientY + "px";
-});
-</script>
-
-</body>
 
 /* NAV */
 
