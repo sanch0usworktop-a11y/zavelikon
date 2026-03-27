@@ -406,18 +406,7 @@ glow.style.left = e.clientX + "px";
 glow.style.top = e.clientY + "px";
 });
 
-<script>
-// если не авторизован — перекидываем на регистрацию
-const user = localStorage.getItem('currentUser');
+</script>
 
-if(!user){
-window.location.href = 'register.html';
-}
-
-// функция выхода
-function logout(){
-localStorage.removeItem('currentUser');
-window.location.href = 'register.html';
-}
-</script></body>
+</body>
 </html>
